@@ -10,7 +10,7 @@ from selenium.webdriver.chrome.options import Options
 chrome_options=Options()
 chrome_options.add_experimental_option("detach",True)
 
-# Set up the webdriver (you'll need to specify the path to your chromedriver)
+# Set up the webdriver this command automatically installs webdriver's latest compatible versions on your device
 driver = webdriver.Chrome(options=chrome_options,service=Service(ChromeDriverManager().install()))
 
 # Navigate to the login page
@@ -33,11 +33,6 @@ try:
     login_button = driver.find_element(By.ID, 'userLogin')
     login_button.click()
     
-    # Wait for successful login (e.g., by checking for an element on the next page)
-    #WebDriverWait(driver, 10).until(
-     #   EC.presence_of_element_located((By.ID, 'dashboard-element'))
-   # )
-    
     print("Login successful!")
 
     #This is a work around so that the chrome window doesn't close.
@@ -45,6 +40,5 @@ try:
 except Exception as e:
     print(f"An error occurred: {e}")
 
-# Remove or comment out this line to keep the browser open
 finally:
     driver.quit()
